@@ -24,6 +24,12 @@ $api->version('v1', function ($api) {
 			$api->delete('dogs/{id}', 'DogsController@destroy');
 			$api->put('dogs/{id}', 'DogsController@update');
 
+			$api->get('districts', 'DistrictsController@index');
+			$api->post('districts', 'DistrictsController@store');
+			$api->get('districts/{id}', 'DistrictsController@show');
+			$api->delete('districts/{id}', 'DistrictsController@destroy');
+			$api->put('districts/{id}', 'DistrictsController@update');
+
 		});
 
 	});
