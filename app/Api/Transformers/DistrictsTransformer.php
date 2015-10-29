@@ -12,7 +12,11 @@ class DistrictsTransformer extends TransformerAbstract
 		return [
 			'id' 	=> (int) $districts->id,
 			'district_name'  => $districts->district_name,
-			'state_id'	=> (int) $districts->state_id
+			'state'	=> [
+					'state_id' => (int) $districts->state->state_id,
+					'desc_state' => $districts->state->desc_state,
+					]
+
 		];
 	}
 }
