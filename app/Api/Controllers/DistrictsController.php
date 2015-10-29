@@ -26,9 +26,16 @@ class DistrictsController extends BaseController
      * 
      * @Get('/')
      */
-    public function index()
-    {
-        return $this->collection(Districts::all(), new DistrictsTransformer);
+    public function index(Request $request)
+    {        
+        if($request->has('district_name') || $request->has('state_id')){
+            return $this->collection(Districts::where('district_name','LIKE', "%".$request->get('district_name')."%")
+                ->where('state_id',$request->get('state_id'))
+                ->get(), new DistrictsTransformer);
+            //return $this->collection(Districts::where('district_name','TTDI')->get(), new DistrictsTransformer);
+        } else {
+            return $this->collection(Districts::all(), new DistrictsTransformer);
+        }
     }
 
     /**
